@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша свадьба</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: #ffe6f0 url('background.jpg') repeat; /* Укажите локальный путь к фоновому изображению */
+            color: #4a1f3d;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Новая шапка */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .header-section img {
+            width: 30%;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-text {
+            text-align: left;
+            margin-left: 2rem;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .header-text p {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .countdown {
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            color: #8b0000;
+        }
+
+        .date {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .switch-btn {
+            position: fixed;
+            right: 2rem;
+            top: 2rem;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            border: 2px solid #4a1f3d;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .switch-btn:hover {
+            background-color: #4a1f3d;
+            color: #fff;
+        }
+
+        .content {
+            transition: opacity 0.5s ease;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .gift-list {
+            columns: 2;
+        }
+
+        @media (max-width: 768px) {
+            .gift-list {
+                columns: 1;
+            }
+        }
+
+        /* Новое меню */
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            background: #fff;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #4a1f3d;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #8b0000;
+        }
+
+        /* Кнопка приглашения */
+        .invitation-btn {
+            background: #4a1f3d;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .invitation-btn:hover {
+            background: #8b0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Новое меню -->
+        <div class="menu">
+            <a href="#about">О нас</a>
+            <a href="#event">Мероприятие</a>
+            <a href="#location">Место проведения</a>
+            <a href="#rsvp">RSVP</a>
+        </div>
+
+        <!-- Новая шапка -->
+        <div class="header-section">
+            <img src="couple.jpg" alt="Свадебная пара" onerror="this.src='fallback-couple.jpg'">
+            <div class="header-text">
+                <h1>Бенджамин и Изабелла</h1>
+                <p>Суббота, 22 марта 2025 г.</p>
+                <button class="invitation-btn">ПРИГЛАШЕНИЕ</button>
+            </div>
+        </div>
+
+        <div class="countdown" id="countdown"></div>
+        <div class="date">10 июня 2025 года в 14:00</div>
+
+        <button class="switch-btn" onclick="toggleContent()">Подробнее о мероприятии</button>
+
+        <div class="content" id="mainContent">
+            <h2>Свадебное событие</h2>
+            <p>Присоединяйтесь к нам в этот торжественный день, когда мы обещаем вместе начать новую главу в нашей жизни. Ваше присутствие сделает этот день еще более значимым для нас.</p>
+        </div>
+
+        <div class="content hidden" id="dressCodeContent">
+            <h2>Дресс-код: Рустик</h2>
+            <p>Тематика мероприятия - деревенский рустик. Предлагаем гостям выбрать наряды в теплых земляных тонах, с элементами натуральных тканей (лен, хлопок). Для женщин - платья с цветочными принтами, для мужчин - рубашки с галстуками-бабочками.</p>
+            
+            <h3>Пожелания к подаркам</h3>
+            <p>Мы будем рады получить в подарок материальные вещи стоимостью от 10 000 до 50 000 рублей, которые пригодятся в семейной жизни:</p>
+            <div class="gift-list">
+                <ul>
+                    <li>Посудомоечная машина (от 25 000 руб)</li>
+                    <li>Вытяжка для кухни (от 15 000 руб)</li>
+                    <li>Набор постельного белья класса люкс (от 10 000 руб)</li>
+                    <li>Обеденный стол с 6 стульями (от 35 000 руб)</li>
+                    <li>Микроволновая печь с грилем (от 12 000 руб)</li>
+                    <li>Кофеварка капсульного типа (от 18 000 руб)</li>
+                    <li>Стиральная машина с сушкой (от 30 000 руб)</li>
+                    <li>Набор кухонной посуды (от 15 000 руб)</li>
+                    <li>Предметы интерьера (часы, картины, вазы) (от 10 000 руб)</li>
+                    <li>Декоративное освещение (от 12 000 руб)</li>
+                    <li>Сервиз чайный/кофейный (от 15 000 руб)</li>
+                    <li>Текстиль для ванной (от 10 000 руб)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date('2025-06-10T14:00:00');
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = "Мероприятие уже началось!";
+                return;
+            }
+
+            const days = Math
